@@ -6,7 +6,6 @@ import requests
 from requests.auth import HTTPBasicAuth
 import json
 import config as c
-import crypto as cryp 
 
 TOKEN = c.TOKEN
 
