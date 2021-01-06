@@ -218,4 +218,6 @@ def parseVotings(response):
 
     return res
 
-bot.run(TOKEN)
+if __name__ == "__main__":
+    bot.run(TOKEN)
+
