@@ -12,8 +12,11 @@ class TestMethods(unittest.TestCase):
     def test_login(self):
 
         credentials = {"username": USER_1_USER, "password": USER_1_PASS}
-
-        r = requests.post(config.BASE_URL_HEROKU +  config.API_BASE + "authentication/login/", credentials)
+        
+        consulta = "authentication/login/"
+        url = config.BASE_URL_HEROKU + config.API_BASE + consulta
+        
+        r = requests.post(url, credentials)
         
         print(r.status_code)
         
