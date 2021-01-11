@@ -1,8 +1,8 @@
-from boto.s3.connection import S3Connection
+import os
 
 #===Secret======
 
-TOKEN = S3Connection(os.environ['TOKEN'], os.environ['S3_SECRET'])
+TOKEN = os.environ['TOKEN']
 
 #=====DECIDE-HEROKU========
 BASE_URL_HEROKU = "https://decide-voting.herokuapp.com/"
