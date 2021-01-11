@@ -1,0 +1,12 @@
+language: python
+python:
+- 3.8.3
+install:
+- pip install -r requirements.txt
+- pip install codacy-coverage
+script:
+- cd test
+- python -m unittest
+- cd ..
+deploy:
+  provider: heroku
