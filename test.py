@@ -13,7 +13,10 @@ class TestMethods(unittest.TestCase):
 
         credentials = {"username": USER_1_USER, "password": USER_1_PASS}
 
-        r = requests.post(config.API_DECIDE + "authentication/login/", credentials)
+        r = requests.post(config.BASE_URL_HEROKU +  config.API_BASE + "authentication/login/", credentials)
+        
+        print(r.status_code)
+        
         self.assertEqual(r.status_code, 200)
 
 
