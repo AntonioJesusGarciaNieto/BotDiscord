@@ -8,3 +8,5 @@ script:
 - python -m unittest
 deploy:
   provider: heroku
+env:
+  - TOKEN=Njg5MDc5MTUzODMxODM3NzE2.Xm9o-A.lArjSGRIcB7Gbj5mA3ryPXR1kwc
