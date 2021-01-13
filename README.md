@@ -45,4 +45,24 @@ Este bot tiene como proposito permitir votaciones al sistema de decide a traves 
   </tr>
 </table>
 
-## Flujo de uso - TODO
+## Flujo de uso
+
+### ¿Qué puedo hacer?
+Se esperá que el primer paso de un usuario novel sea ejecutar el comando !info. 
+![](Images/Img1.png "")
+
+### Login
+Para poder disfrutar de las demás funcionalidades el usuario deberá darse de alta. Una vez realizado podrá seguir consultando.
+![](Images/Img2.png "")
+
+### ¿Qué puedo votar?.
+Tras logearse el usuario debería ver todas las votaciones disponibles.
+![](Images/Img3.png "")
+
+### Me interesa esta votación
+El usuario podrá conseguir más información sobre la votación ue le interese.
+![](Images/Img4.png "")
+
+### Voto a ...
+El usuario podrá votar lo que decida a la votación que le interese.
+![](Images/Img5.png "")
