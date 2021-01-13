@@ -52,7 +52,7 @@ class TestMethods(unittest.TestCase):
     
     def test_get_user(self):
 
-        data = {'token': token}
+        data = {'token': USER_1_TOKEN}
         
         r = requests.post(c.BASE_URL_HEROKU + "authentication/getuser/", data)
 
