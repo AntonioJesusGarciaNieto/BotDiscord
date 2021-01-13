@@ -16,6 +16,7 @@ class TestMethods(unittest.TestCase):
         credentials = {"username": USER_1_USER, "password": USER_1_PASS}
         
         consulta = "authentication/login/"
+
         url = config.BASE_URL_HEROKU + config.API_BASE + consulta
         
         r = requests.post(url, credentials)
@@ -25,9 +26,9 @@ class TestMethods(unittest.TestCase):
 
     def test_votings(self):
  
-        headers = {"token": str(USER_1_TOKEN)}
+        headers = {"token": USER_1_TOKEN}
 
-        consulta = "votings/"
+        consulta = "voting/"
         url = config.BASE_URL_HEROKU + config.API_BASE + consulta
         
         r = requests.get(url, headers = headers)
