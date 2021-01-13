@@ -42,7 +42,7 @@ class TestMethods(unittest.TestCase):
 
         consulta = "voting/"
 
-        elementoAConsultar = "1/"
+        elementoAConsultar = "?id=1/"
 
         url = config.BASE_URL_HEROKU + config.API_BASE + consulta + elementoAConsultar
         
