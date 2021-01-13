@@ -67,5 +67,5 @@ El usuario podrá conseguir más información sobre la votación ue le interese.
 
 
 ### Voto a ...
-El usuario podrá votar lo que decida a la votación que le interese.
+El usuario podrá votar lo que decida en la votación que le interese.
 ![](Images/votar.png "")
