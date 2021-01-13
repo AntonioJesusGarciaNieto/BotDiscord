@@ -1,4 +1,4 @@
-discord
+python
 requests
 coverage==4.5.2
-
+discord.py
