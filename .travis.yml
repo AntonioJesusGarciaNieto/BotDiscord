@@ -9,4 +9,4 @@ script:
 deploy:
   provider: heroku
 on:
-  all_branches: true
+  skip_cleanup: true
