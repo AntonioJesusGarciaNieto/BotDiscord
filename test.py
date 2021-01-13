@@ -36,5 +36,28 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
 
 
+    def test_voting(self):
+ 
+        headers = {"token": USER_1_TOKEN}
+
+        consulta = "voting/"
+
+        elementoAConsultar = "1/"
+
+        url = config.BASE_URL_HEROKU + config.API_BASE + consulta + elementoAConsultar
+        
+        r = requests.get(url, headers = headers)
+        
+        self.assertEqual(r.status_code, 200)
+    
+    def test_get_user(self):
+
+        data = {'token': token}
+        
+        r = requests.post(c.BASE_URL_HEROKU + "authentication/getuser/", data)
+
+        self.assertEqual(r.status_code, 200)
+
+
 if __name__ == '__main__':
     unittest.main()
