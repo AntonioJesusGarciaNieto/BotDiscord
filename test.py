@@ -54,7 +54,7 @@ class TestMethods(unittest.TestCase):
 
         data = {'token': USER_1_TOKEN}
         
-        r = requests.post(c.BASE_URL_HEROKU + "authentication/getuser/", data)
+        r = requests.post(config.BASE_URL_HEROKU + "authentication/getuser/", data)
 
         self.assertEqual(r.status_code, 200)
 
