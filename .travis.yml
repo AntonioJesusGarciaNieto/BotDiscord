@@ -8,4 +8,5 @@ script:
 - python -m unittest
 deploy:
   provider: heroku
-
+on:
+  all_branches: true
