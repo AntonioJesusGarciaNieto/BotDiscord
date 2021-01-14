@@ -15,7 +15,7 @@ description = ""
 bot = commands.Bot(command_prefix='!', description=description, intents=intents)
 
 DIC = {}
-REG = {}
+
 
 '''
 ##############################
