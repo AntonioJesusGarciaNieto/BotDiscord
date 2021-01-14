@@ -27,7 +27,7 @@ REG = {}
 @bot.command()
 async def iniVotacion(ctx):
 
-''' Permite iniciar el proceso de votación de forma amena. '''
+    ''' Permite iniciar el proceso de votación de forma amena. '''
 
     a = ctx.author
 
@@ -37,7 +37,7 @@ async def iniVotacion(ctx):
 @bot.command()
 async def info(ctx):
 
-''' Da al usuario una lista con un resumen de todos los comandos disponibles. '''
+    ''' Da al usuario una lista con un resumen de todos los comandos disponibles. '''
 
     a = ctx.author
     await a.create_dm()
@@ -52,9 +52,9 @@ async def info(ctx):
 @bot.command()
 async def loginAsUser(ctx,user: str,clave: str):
 
-''' Te permite logearte.
-        Inputs: user (nombre de usuario)
-                clave (contraseña en decide). '''
+    ''' Te permite logearte.
+            Inputs: user (nombre de usuario)
+                    clave (contraseña en decide). '''
 
     a = ctx.author
 
@@ -88,7 +88,7 @@ async def loginAsUser(ctx,user: str,clave: str):
 @bot.command()
 async def votings(ctx):
 
-''' Te permite ver las votaciones disponibles para un usuario logeado. '''
+    ''' Te permite ver las votaciones disponibles para un usuario logeado. '''
     
 
     a = ctx.author
@@ -128,8 +128,8 @@ async def votings(ctx):
 @bot.command()
 async def voting(ctx,option: int):
 
-''' Te permite obtener detalles concretos de una votación, solo para un usuario logeado.
-        Inputs: option (ID de la votación). '''
+    ''' Te permite obtener detalles concretos de una votación, solo para un usuario logeado.
+            Inputs: option (ID de la votación). '''
 
     consulta = "voting/?id="
 
@@ -161,9 +161,9 @@ async def voting(ctx,option: int):
 @bot.command()
 async def vote(ctx,encuesta: int,respuesta: int):
 
-''' Te permite realizar una votación, solo para un usuario logeado.
-        Inputs: encuesta (ID de la encuesta).
-                respuesta (ID de la respuesta). '''
+    ''' Te permite realizar una votación, solo para un usuario logeado.
+            Inputs: encuesta (ID de la encuesta).
+                    respuesta (ID de la respuesta). '''
 
     auth = ctx.author
 
@@ -199,7 +199,9 @@ async def vote(ctx,encuesta: int,respuesta: int):
 
 @bot.command()
 async def clean(ctx):
-''' Te permite limpiar todos los mensajes de un canal.'''
+
+    ''' Te permite limpiar todos los mensajes de un canal.'''
+
     channel = ctx.channel
     await asyncio.sleep(3)
     await channel.purge()
@@ -226,8 +228,8 @@ async def on_ready():
 
 def get_user(token):
 
-''' Te permite obtener un usuario a través de su token.
-        Inputs: token (token del usuario). '''
+    ''' Te permite obtener un usuario a través de su token.
+            Inputs: token (token del usuario). '''
 
     data = {'token': token}
     r = requests.post(c.BASE_URL_HEROKU + "authentication/getuser/", data)
@@ -238,9 +240,9 @@ def get_user(token):
 
 def save_vote_data(data_dict,token):
 
-''' Te permite guardar el voto del usuario.
-        Inputs: token (token del usuario).
-        Inputs: data_dict (voto en formato json). '''
+    ''' Te permite guardar el voto del usuario.
+            Inputs: token (token del usuario).
+                    data_dict (voto en formato json). '''
     
     headers = {"Authorization": "Token " + token,
                 "Content-Type": "application/json"}
@@ -253,8 +255,8 @@ def save_vote_data(data_dict,token):
 
 def parseVotings(response):
 
-''' Te permite parsear votaciones.
-        Inputs: response (respuesta). '''
+    ''' Te permite parsear votaciones.
+            Inputs: response (respuesta). '''
 
     res = []
     for r in response:
