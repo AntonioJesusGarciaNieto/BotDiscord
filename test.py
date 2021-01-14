@@ -3,6 +3,7 @@ import requests
 import json
 import sys
 import config
+import bot
 
 USER_1_USER = "user"
 USER_1_PASS = "rinoceronte2"

@@ -14,6 +14,11 @@ Este bot tiene como proposito permitir votaciones al sistema de decide a traves 
     <td style="width: 33%;">Funcionalidad</td>
   </tr>
   <tr>
+    <td style="width: 33%;">!iniVotacion </td>
+    <td style="width: 33%;">... </td>
+    <td style="width: 33%;">Permite empezar la votación de una forma guiada y amena</td>
+  </tr>
+  <tr>
     <td style="width: 33%;">!info </td>
     <td style="width: 33%;">... </td>
     <td style="width: 33%;">Muestra un compendio de todos los comandos existentes</td>
@@ -53,19 +58,23 @@ Se esperá que el primer paso de un usuario novel sea ejecutar el comando !info.
 ![](Images/info.png "")
 ![](Images/info_res.png "")
 
-### Login
+### Login.
 Para poder disfrutar de las demás funcionalidades el usuario deberá darse de alta. Una vez realizado podrá seguir consultando.
 ![](Images/loginAsUser.png "")
 
 
-### ¿Qué puedo votar?.
+### ¿Qué puedo votar?
 Tras logearse el usuario debería ver todas las votaciones disponibles.
 ![](Images/votaciones.png "")
 
-### Me interesa esta votación
-El usuario podrá conseguir más información sobre la votación ue le interese.
-
+### Me interesa esta votación...
+El usuario podrá conseguir más información sobre la votación que más le interese.
+![](Images/votacion.png "")
 
 ### Voto a ...
 El usuario podrá votar lo que decida en la votación que le interese.
 ![](Images/votar.png "")
+
+
+## Flujo de uso completo.
+![](Images/flujoCompleto.png "")

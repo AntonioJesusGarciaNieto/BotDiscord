@@ -18,32 +18,47 @@ bot = commands.Bot(command_prefix='!', description=description, intents=intents)
 DIC = {}
 REG = {}
 
+'''
+##############################
+# Funcionalidades            #
+##############################
+'''
+
 @bot.command()
 async def iniVotacion(ctx):
+
+''' Permite iniciar el proceso de votación de forma amena. '''
 
     a = ctx.author
 
     await a.create_dm()
-    await a.dm_channel.send('Hola, si quieres comenzar el proceso de votación debe loggearse con el comando !loginAsUser seguido de su usuario y contraseña.\n'+'\tPor ejemplo, !loginAsUser Firulais PassWord')
+    await a.dm_channel.send('Hola, si quieres comenzar el proceso de votación debe logearse con el comando !loginAsUser seguido de su usuario y contraseña.\n'+'\tPor ejemplo, !loginAsUser Firulais PassWord')
 
 @bot.command()
 async def info(ctx):
+
+''' Da al usuario una lista con un resumen de todos los comandos disponibles. '''
+
     a = ctx.author
     await a.create_dm()
     await a.dm_channel.send("Si necesitas ayuda has llamado al comando adecuado :). Te paso una chuleta con todos los comandos: \n"+
                                         " \t- !loginAsUser -> Te permite logearte, introduce el comando seguido de tu nombre de usuario y contraseña en decide \n"+
                                         " \t- !clean -> Borra todos los mensajes, solo en canales de texto \n"+
-                                        " \t- !votings -> Te permite ver las votaciones disponibles \n"
-                                        " \t- !voting -> Te permite obtener detalles concretos de una votación. Escribe !voting espacio y el ID de la votación. \n"
-                                        " \t- !vote -> Permite realizar una votación. Escribe !vote espacio el id de la votación y la opción elegida. \n" )
+                                        " \t- !votings -> Te permite ver las votaciones disponibles para un usuario logeado. \n"
+                                        " \t- !voting -> Te permite obtener detalles concretos de una votación, solo para un usuario logeado. Escribe !voting espacio y el ID de la votación. \n"
+                                        " \t- !vote -> Permite realizar una votación. Escribe !vote espacio el id de la votación y la opción elegida. \n"
+                                        " \t- !iniVotacion -> Permite iniciar el proceso de votación de forma amena. \n" )
 
 @bot.command()
 async def loginAsUser(ctx,user: str,clave: str):
 
+''' Te permite logearte.
+        Inputs: user (nombre de usuario)
+                clave (contraseña en decide). '''
+
     a = ctx.author
 
     consulta = "authentication/login/"
-
     url = c.BASE_URL_HEROKU + c.API_BASE + consulta
 
     auth = {
@@ -72,6 +87,9 @@ async def loginAsUser(ctx,user: str,clave: str):
 
 @bot.command()
 async def votings(ctx):
+
+''' Te permite ver las votaciones disponibles para un usuario logeado. '''
+    
 
     a = ctx.author
     token = DIC[str(a)]
@@ -110,6 +128,9 @@ async def votings(ctx):
 @bot.command()
 async def voting(ctx,option: int):
 
+''' Te permite obtener detalles concretos de una votación, solo para un usuario logeado.
+        Inputs: option (ID de la votación). '''
+
     consulta = "voting/?id="
 
     
@@ -140,6 +161,10 @@ async def voting(ctx,option: int):
 @bot.command()
 async def vote(ctx,encuesta: int,respuesta: int):
 
+''' Te permite realizar una votación, solo para un usuario logeado.
+        Inputs: encuesta (ID de la encuesta).
+                respuesta (ID de la respuesta). '''
+
     auth = ctx.author
 
     token = DIC[str(auth)]
@@ -157,7 +182,7 @@ async def vote(ctx,encuesta: int,respuesta: int):
     elif respuesta == 2:
         b = 1
     else:
-        print("Cuidaoooooooooooo")
+        print("En este proyecto no se tendrán en cuenta votaciones con más de dos opciones")
 
 
     data_dict = {
@@ -174,9 +199,16 @@ async def vote(ctx,encuesta: int,respuesta: int):
 
 @bot.command()
 async def clean(ctx):
+''' Te permite limpiar todos los mensajes de un canal.'''
     channel = ctx.channel
     await asyncio.sleep(3)
     await channel.purge()
+
+'''
+##############################
+# on_ready                   #
+##############################
+'''
 
 @bot.event
 async def on_ready():
@@ -185,9 +217,17 @@ async def on_ready():
     print(bot.user.id)
     print('------')
  
-### Utilidades
+
+'''
+##############################
+# Métodos de utilidad        #
+##############################
+'''
 
 def get_user(token):
+
+''' Te permite obtener un usuario a través de su token.
+        Inputs: token (token del usuario). '''
 
     data = {'token': token}
     r = requests.post(c.BASE_URL_HEROKU + "authentication/getuser/", data)
@@ -197,6 +237,10 @@ def get_user(token):
     return r
 
 def save_vote_data(data_dict,token):
+
+''' Te permite guardar el voto del usuario.
+        Inputs: token (token del usuario).
+        Inputs: data_dict (voto en formato json). '''
     
     headers = {"Authorization": "Token " + token,
                 "Content-Type": "application/json"}
@@ -208,6 +252,10 @@ def save_vote_data(data_dict,token):
 
 
 def parseVotings(response):
+
+''' Te permite parsear votaciones.
+        Inputs: response (respuesta). '''
+
     res = []
     for r in response:
         v = {'id': r['id'], 'name': r['name'], 'desc': r['desc'], 'end_date': r['end_date'],
@@ -217,6 +265,12 @@ def parseVotings(response):
             res.append(v)
 
     return res
+
+'''
+##############################
+# Main                       #
+##############################
+'''
 
 if __name__ == "__main__":
     bot.run(TOKEN)
