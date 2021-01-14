@@ -2,7 +2,7 @@
 
 ## Proposito
 
-Este bot tiene como proposito permitir votaciones al sistema de decide a traves de Discord.
+Este bot tiene como propósito permitir votaciones al sistema de decide a través de Discord.
 
 ## Comandos
 
