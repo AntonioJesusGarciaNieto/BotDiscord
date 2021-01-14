@@ -77,4 +77,4 @@ El usuario podrá votar lo que decida en la votación que le interese.
 
 
 ## Flujo de uso completo.
-![](Images/flujoCompleto.png "")
+![](Images/FlujoCompleto.png "")
