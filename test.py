@@ -48,7 +48,7 @@ class TestMethods(unittest.TestCase):
         
         self.assertEqual(r.status_code, 200)
 
-        r = json.loads(response.text)
+        r = json.loads(r.text)
         r = len(r)
 
         self.assertEqual(r, 3)
@@ -93,7 +93,7 @@ class TestMethods(unittest.TestCase):
             "token": TOKEN
         }
 
-        headers = {"Authorization": "Token " + token,
+        headers = {"Authorization": "Token " + TOKEN,
                 "Content-Type": "application/json"}
     
         r = requests.post(c.BASE_URL_HEROKU + "store/", json=data_dict, headers = headers)
