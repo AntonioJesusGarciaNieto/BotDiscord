@@ -36,22 +36,6 @@ class TestMethods(unittest.TestCase):
         r = requests.get(url, headers = headers)
         
         self.assertEqual(r.status_code, 200)
-    
-    def test_number_of_votings(self):
-
-        headers = {"token": USER_1_TOKEN}
-
-        consulta = "voting/"
-        url = config.BASE_URL_HEROKU + config.API_BASE + consulta
-        
-        r = requests.get(url, headers = headers)
-        
-        self.assertEqual(r.status_code, 200)
-
-        r = json.loads(r.text)
-        r = len(r)
-
-        self.assertEqual(r, 3)
 
     def test_voting(self):
  
@@ -93,7 +77,7 @@ class TestMethods(unittest.TestCase):
             "token": TOKEN
         }
 
-        headers = {"Authorization": "Token " + TOKEN,
+        headers = {"Authorization": TOKEN,
                 "Content-Type": "application/json"}
     
         r = requests.post(config.BASE_URL_HEROKU + "store/", json=data_dict, headers = headers)
