@@ -9,7 +9,8 @@ USER_1_USER = "user"
 USER_1_ID = "2"
 USER_1_PASS = "rinoceronte2"
 USER_1_TOKEN = "f016cd06e314c5f02c14f7408329067a4cd92bc0"
-TOKEN = config.TOKEN
+
+
 
 class TestMethods(unittest.TestCase):
 
@@ -78,12 +79,9 @@ class TestMethods(unittest.TestCase):
             "token": USER_1_TOKEN
         }
 
-        headers = {"Authorization":"Token " + USER_1_TOKEN,
-                "Content-Type": "application/json"}
+        headers = {"Authorization":"Token   " + USER_1_TOKEN,"Content-Type": "application/json"}
     
         r = requests.post(config.BASE_URL_HEROKU + "store/", json=data_dict, headers = headers)
-
-        print(r.status_code)
 
         self.assertEqual(r.status_code, 200)
 
