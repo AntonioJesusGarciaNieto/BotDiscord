@@ -6,7 +6,7 @@ import config
 import bot
 
 USER_1_USER = "user"
-USER_1_ID = 1
+USER_1_ID = 2
 USER_1_PASS = "rinoceronte2"
 USER_1_TOKEN = "f016cd06e314c5f02c14f7408329067a4cd92bc0"
 TOKEN = config.TOKEN
@@ -36,6 +36,7 @@ class TestMethods(unittest.TestCase):
         r = requests.get(url, headers = headers)
         
         self.assertEqual(r.status_code, 200)
+
 
     def test_voting(self):
  
@@ -77,7 +78,7 @@ class TestMethods(unittest.TestCase):
             "token": TOKEN
         }
 
-        headers = {"Authorization": TOKEN,
+        headers = {"Authorization":"Token " + TOKEN,
                 "Content-Type": "application/json"}
     
         r = requests.post(config.BASE_URL_HEROKU + "store/", json=data_dict, headers = headers)
