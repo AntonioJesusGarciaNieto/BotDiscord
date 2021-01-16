@@ -6,7 +6,7 @@ import config
 import bot
 
 USER_1_USER = "user"
-USER_1_ID = 2
+USER_1_ID = "2"
 USER_1_PASS = "rinoceronte2"
 USER_1_TOKEN = "f016cd06e314c5f02c14f7408329067a4cd92bc0"
 TOKEN = config.TOKEN
@@ -72,7 +72,7 @@ class TestMethods(unittest.TestCase):
         encuesta = 1
 
         data_dict = {
-            "vote": { "a": a,"b":b},
+            "vote": { "a": a,"b": b},
             "voting": encuesta,
             "voter": USER_1_ID,
             "token": TOKEN
