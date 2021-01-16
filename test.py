@@ -85,6 +85,30 @@ class TestMethods(unittest.TestCase):
 
         self.assertEqual(r.status_code, 200)
 
+    def test_save_vote_w_wrong_data(self):
+    
+        #Opción elegída.
+        a = 1
+
+        #Opción no elegída.
+        b = 0
+
+        #Encuesta elegída
+        encuesta = 1
+
+        data_dict = {
+            "vote": { "a": a,"b": b},
+            "voting": encuesta,
+            "voter": USER_1_ID,
+            "token": "  1221212121212121212"
+        }
+
+        headers = {"Authorization":"Token   " + " 1221212121212121212" ,"Content-Type": "application/json"}
+    
+        r = requests.post(config.BASE_URL_HEROKU + "store/", json=data_dict, headers = headers)
+
+        self.assertEqual(r.status_code, 401)
+
     
 
 
