@@ -75,7 +75,7 @@ class TestMethods(unittest.TestCase):
             "vote": { "a": a,"b": b},
             "voting": encuesta,
             "voter": USER_1_ID,
-            "token": TOKEN
+            "token": USER_1_TOKEN
         }
 
         headers = {"Authorization":"Token " + TOKEN,
