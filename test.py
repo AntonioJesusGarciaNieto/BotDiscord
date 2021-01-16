@@ -6,9 +6,10 @@ import config
 import bot
 
 USER_1_USER = "user"
+USER_1_ID = 1
 USER_1_PASS = "rinoceronte2"
-TOKEN = config.TOKEN
 USER_1_TOKEN = "f016cd06e314c5f02c14f7408329067a4cd92bc0"
+TOKEN = config.TOKEN
 
 class TestMethods(unittest.TestCase):
 
@@ -35,7 +36,22 @@ class TestMethods(unittest.TestCase):
         r = requests.get(url, headers = headers)
         
         self.assertEqual(r.status_code, 200)
+    
+    def test_number_of_votings(self):
 
+        headers = {"token": USER_1_TOKEN}
+
+        consulta = "voting/"
+        url = config.BASE_URL_HEROKU + config.API_BASE + consulta
+        
+        r = requests.get(url, headers = headers)
+        
+        self.assertEqual(r.status_code, 200)
+
+        r = json.loads(response.text)
+        r = len(r)
+
+        self.assertEqual(r, 3)
 
     def test_voting(self):
  
@@ -58,6 +74,37 @@ class TestMethods(unittest.TestCase):
         r = requests.post(config.BASE_URL_HEROKU + "authentication/getuser/", data)
 
         self.assertEqual(r.status_code, 200)
+
+    def test_save_vote_data(self):
+    
+        #Opción elegída.
+        a = 1
+
+        #Opción no elegída.
+        b = 0
+
+        #Encuesta elegída
+        encuesta = 1
+
+        data_dict = {
+            "vote": { "a": a,"b":b},
+            "voting": encuesta,
+            "voter": USER_1_ID,
+            "token": TOKEN
+        }
+
+        headers = {"Authorization": "Token " + token,
+                "Content-Type": "application/json"}
+    
+        r = requests.post(c.BASE_URL_HEROKU + "store/", json=data_dict, headers = headers)
+
+        print(r.status_code)
+
+        self.assertEqual(r.status_code, 200)
+
+    
+
+
 
 
 if __name__ == '__main__':
