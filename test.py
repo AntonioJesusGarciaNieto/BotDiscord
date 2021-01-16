@@ -78,7 +78,7 @@ class TestMethods(unittest.TestCase):
             "token": USER_1_TOKEN
         }
 
-        headers = {"Authorization":"Token " + TOKEN,
+        headers = {"Authorization":"Token " + USER_1_TOKEN,
                 "Content-Type": "application/json"}
     
         r = requests.post(config.BASE_URL_HEROKU + "store/", json=data_dict, headers = headers)
