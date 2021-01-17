@@ -233,8 +233,6 @@ def get_user(token):
     data = {'token': token}
     r = requests.post(c.BASE_URL_HEROKU + "authentication/getuser/", data)
 
-    print("GetUser - " + str(r.status_code))
-
     return r
 
 def save_vote_data(data_dict,token):

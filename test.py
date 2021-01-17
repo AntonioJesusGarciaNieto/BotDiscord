@@ -6,9 +6,9 @@ import config
 import bot
 
 USER_1_USER = "user"
-USER_1_ID = "2"
+USER_1_ID = 2
 USER_1_PASS = "rinoceronte2"
-USER_1_TOKEN = "f016cd06e314c5f02c14f7408329067a4cd92bc0"
+USER_1_TOKEN = "6adef60924e1a9a330e99a390a47147d87e5bac6"
 
 
 
@@ -72,11 +72,15 @@ class TestMethods(unittest.TestCase):
         #Encuesta elegída
         encuesta = 1
 
+        user = bot.get_user(USER_1_TOKEN)
+        user = json.loads(user.text)
+        user_id= user['id']
+
         data_dict = {
-            "vote": { "a": a,"b": b},
-            "voting": encuesta,
-            "voter": USER_1_ID,
-            "token": "  "+USER_1_TOKEN
+            "vote": { "a": 0,"b": 1},
+            "voting": 1,
+            "voter": user_id,
+            "token": USER_1_TOKEN,
         }
 
         headers = {"Authorization":"Token   " + USER_1_TOKEN,"Content-Type": "application/json"}
@@ -84,6 +88,7 @@ class TestMethods(unittest.TestCase):
         r = requests.post(config.BASE_URL_HEROKU + "store/", json=data_dict, headers = headers)
 
         self.assertEqual(r.status_code, 200)
+
 
     def test_save_vote_w_wrong_data(self):
     
