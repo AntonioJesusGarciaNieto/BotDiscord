@@ -8,7 +8,7 @@ import bot
 USER_1_USER = "user"
 USER_1_ID = 2
 USER_1_PASS = "rinoceronte2"
-USER_1_TOKEN = "6adef60924e1a9a330e99a390a47147d87e5bac6"
+USER_1_TOKEN = ""
 
 
 
@@ -23,7 +23,13 @@ class TestMethods(unittest.TestCase):
         url = config.BASE_URL_HEROKU + config.API_BASE + consulta
         
         r = requests.post(url, credentials)
-        
+
+        respuesta = r.json()
+
+        global USER_1_TOKEN 
+
+        USER_1_TOKEN = respuesta["token"]
+
         self.assertEqual(r.status_code, 200)
 
 
@@ -53,37 +59,28 @@ class TestMethods(unittest.TestCase):
         
         self.assertEqual(r.status_code, 200)
     
-    #def test_get_user(self):
+    def test_z_get_user(self):
 
-        #data = {'token': USER_1_TOKEN}
+        data = {'token': USER_1_TOKEN}
         
-        #r = requests.post(config.BASE_URL_HEROKU + "authentication/getuser/", data)
+        r = requests.post(config.BASE_URL_HEROKU + "authentication/getuser/", data)
 
-        #self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.status_code, 200)
 
-    #def test_save_vote_data(self):
+    def test_save_vote_data(self):
+
+        data_dict = {
+            "vote": { "a": 0,"b": 1},
+            "voting": 1,
+            "voter": 2,
+            "token": USER_1_TOKEN,
+        }
+
+        headers = {"Authorization":"Token   " + USER_1_TOKEN,"Content-Type": "application/json"}
     
-        #Opción elegída.
-        #a = 1
+        r = requests.post(config.BASE_URL_HEROKU + "store/", json=data_dict, headers = headers)
 
-        #Opción no elegída.
-        #b = 0
-
-        #Encuesta elegída
-        #encuesta = 1
-
-        #data_dict = {
-            #"vote": { "a": 1,"b": 1},
-            #"voting": 1,
-            #"voter": 2,
-            #"token": USER_1_TOKEN,
-        #}
-
-        #headers = {"Authorization":"Token   " + USER_1_TOKEN,"Content-Type": "application/json"}
-    
-        #r = requests.post(config.BASE_URL_HEROKU + "store/", json=data_dict, headers = headers)
-
-        #self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.status_code, 200)
 
 
     def test_save_vote_w_wrong_data(self):
