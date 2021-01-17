@@ -2,9 +2,7 @@ import os
 
 #===Secret======
 
-#TOKEN = os.environ['TOKEN']
-
-TOKEN = "Njg5MDc5MTUzODMxODM3NzE2.Xm9o-A.yXU7zKsHMtBjIQg5S_nRI_T-UcQ"
+TOKEN = os.environ['TOKEN']
 
 #=====DECIDE-HEROKU========
 BASE_URL_HEROKU = "https://decide-voting.herokuapp.com/"
