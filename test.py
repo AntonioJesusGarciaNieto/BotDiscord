@@ -41,6 +41,8 @@ class TestMethods(unittest.TestCase):
     def test_login_wrong(self):
         #Comprobamos que el usuario no se pueda registrar de forma correcta si introduce una contraseña erronea.
         
+        is_empty = False
+
         credentials = {"username": USER_1_USER, "password": USER_1_PASS+"EstoNoFunciona"}
         
         consulta = "authentication/login/"
@@ -50,14 +52,13 @@ class TestMethods(unittest.TestCase):
         r = requests.post(url, credentials)
 
         respuesta = r.json()
-
-        global USER_1_TOKEN 
         
         try:
             USER_1_TOKEN = respuesta["token"]
         except:
+            is_empty = False
 
-        self.assertEqual(r.status_code, 400)
+        self.assertFalse(is_empty)
 
 
     def test_votings(self):
