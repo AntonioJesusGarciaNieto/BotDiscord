@@ -72,14 +72,10 @@ class TestMethods(unittest.TestCase):
         #Encuesta elegída
         encuesta = 1
 
-        user = bot.get_user(USER_1_TOKEN)
-        user = json.loads(user.text)
-        user_id= user['id']
-
         data_dict = {
-            "vote": { "a": 0,"b": 1},
+            "vote": { "a": a,"b": b},
             "voting": 1,
-            "voter": user_id,
+            "voter": USER_1_ID,
             "token": USER_1_TOKEN,
         }
 
