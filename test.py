@@ -52,8 +52,10 @@ class TestMethods(unittest.TestCase):
         respuesta = r.json()
 
         global USER_1_TOKEN 
-
-        USER_1_TOKEN = respuesta["token"]
+        
+        try:
+            USER_1_TOKEN = respuesta["token"]
+        except:
 
         self.assertEqual(r.status_code, 400)
 
@@ -102,7 +104,7 @@ class TestMethods(unittest.TestCase):
 
         #Comprobamos que no podemos obtener el ID de usuario a través de su token.
         
-        data = {'token': USER_1_TOKEN}
+        data = {'token': USER_1_TOKEN+"estofalla"}
         
         r = requests.post(config.BASE_URL_HEROKU + "authentication/getuser/", data)
 
