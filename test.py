@@ -73,9 +73,9 @@ class TestMethods(unittest.TestCase):
         encuesta = 1
 
         data_dict = {
-            "vote": { "a": a,"b": b},
+            "vote": { "a": 1,"b": 1},
             "voting": 1,
-            "voter": USER_1_ID,
+            "voter": 2,
             "token": USER_1_TOKEN,
         }
 
