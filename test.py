@@ -53,37 +53,37 @@ class TestMethods(unittest.TestCase):
         
         self.assertEqual(r.status_code, 200)
     
-    def test_get_user(self):
+    #def test_get_user(self):
 
-        data = {'token': USER_1_TOKEN}
+        #data = {'token': USER_1_TOKEN}
         
-        r = requests.post(config.BASE_URL_HEROKU + "authentication/getuser/", data)
+        #r = requests.post(config.BASE_URL_HEROKU + "authentication/getuser/", data)
 
-        self.assertEqual(r.status_code, 200)
+        #self.assertEqual(r.status_code, 200)
 
-    def test_save_vote_data(self):
+    #def test_save_vote_data(self):
     
         #Opción elegída.
-        a = 1
+        #a = 1
 
         #Opción no elegída.
-        b = 0
+        #b = 0
 
         #Encuesta elegída
-        encuesta = 1
+        #encuesta = 1
 
-        data_dict = {
-            "vote": { "a": 1,"b": 1},
-            "voting": 1,
-            "voter": 2,
-            "token": USER_1_TOKEN,
-        }
+        #data_dict = {
+            #"vote": { "a": 1,"b": 1},
+            #"voting": 1,
+            #"voter": 2,
+            #"token": USER_1_TOKEN,
+        #}
 
-        headers = {"Authorization":"Token   " + USER_1_TOKEN,"Content-Type": "application/json"}
+        #headers = {"Authorization":"Token   " + USER_1_TOKEN,"Content-Type": "application/json"}
     
-        r = requests.post(config.BASE_URL_HEROKU + "store/", json=data_dict, headers = headers)
+        #r = requests.post(config.BASE_URL_HEROKU + "store/", json=data_dict, headers = headers)
 
-        self.assertEqual(r.status_code, 200)
+        #self.assertEqual(r.status_code, 200)
 
 
     def test_save_vote_w_wrong_data(self):
