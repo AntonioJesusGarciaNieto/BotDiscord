@@ -31,7 +31,7 @@ async def iniVotacion(ctx):
     a = ctx.author
 
     await a.create_dm()
-    await a.dm_channel.send('Hola, si quieres comenzar el proceso de votación debe logearse con el comando !loginAsUser seguido de su usuario y contraseña.\n'+'\tPor ejemplo, !loginAsUser Firulais PassWord')
+    await a.dm_channel.send('Hello, if you want to start the voting process you must log in with the command !loginAsUser followed by your username and password. For example, !loginAsUser Firulais PassWord')
 
 @bot.command()
 async def info(ctx):
